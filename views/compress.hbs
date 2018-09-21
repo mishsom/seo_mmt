@@ -1,0 +1,27 @@
+
+<div class="form-header">
+    {{#if errors}}
+    <h2>Send us a message</h2>
+    <% } else { %>
+    <h2 class="errors-heading">Oops, please correct the following:</h2>
+    <ul class="errors-list">
+
+    {{#each errors}}
+        <li>{{ this.msg}}</li>
+    {{/each}}
+    </ul>
+    {{/if}}
+</div>
+
+<form method="post" action="/contact" novalidate>
+    <div class="form-field <%= errors.email ? 'form-field-invalid' : '' %>">
+        <label for="data">insert html here</label>
+        <input class="input" id="data" name="data" type="text" value="{{data}}" />
+        {{#if errors.data}}
+        <div class="error">{{errors.email.msg }}</div>
+        {{/if}}
+    </div>
+    <div class="form-actions">
+        <button class="btn" type="submit">Send</button>
+    </div>
+</form>
